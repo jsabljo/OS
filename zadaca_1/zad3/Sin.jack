@@ -1,0 +1,95 @@
+
+class Sin {
+    static Array table;
+    
+    function void init () {  
+        var int i;
+
+        let table = Array.new(360);
+   
+        let i = 0;
+        while (i < 360) {
+            let table[i] = 0;
+            let i = i + 1;
+        }
+        let table[6] = 10;
+        let table[12] = 21;
+        let table[18] = 31;
+        let table[24] = 41;
+        let table[30] = 50;
+        let table[36] = 59;
+        let table[42] = 67;
+        let table[48] = 74;
+        let table[54] = 81;
+        let table[60] = 87;
+        let table[66] = 91;
+        let table[72] = 95;
+        let table[78] = 98;
+        let table[84] = 99;
+        let table[90] = 100;
+
+        let table[96] = 99;
+        let table[102] = 98;
+        let table[108] = 95;
+        let table[114] = 91;
+        let table[120] = 87;
+        let table[126] = 81;
+        let table[132] = 74;
+        let table[138] = 67;
+        let table[144] = 59;
+        let table[150] = 50;
+        let table[156] = 41;
+        let table[162] = 31;
+        let table[168] = 21;
+        let table[174] = 10;
+        let table[180] = 0;
+
+        let table[186] = -10;
+        let table[192] = -21;
+        let table[198] = -31;
+        let table[204] = -41;
+        let table[210] = -50;
+        let table[216] = -59;
+        let table[222] = -67;
+        let table[228] = -74;
+        let table[234] = -81;
+        let table[240] = -87;
+        let table[246] = -91;
+        let table[252] = -95;
+        let table[258] = -98;
+        let table[264] = -99;
+        let table[270] = -100;
+
+        let table[276] = -99;
+        let table[282] = -98;
+        let table[288] = -95;
+        let table[294] = -91;
+        let table[300] = -87;
+        let table[306] = -81;
+        let table[312] = -74;
+        let table[318] = -67;
+        let table[324] = -59;
+        let table[330] = -50;
+        let table[336] = -41;
+        let table[342] = -31;
+        let table[348] = -21;
+        let table[354] = -10;
+        
+    
+        return;
+    }
+
+    function int sin (int A) {
+        return(table[A]);
+    }
+    
+    function int cos (int A) {
+        let A = A + 90;   // cos = sin + 90
+        if (A > 359) {    
+            let A = A - 360;
+        }
+        return(table[A]);
+    }
+    
+
+}

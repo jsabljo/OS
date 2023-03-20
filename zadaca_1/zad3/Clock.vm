@@ -5,21 +5,13 @@ pop pointer 0
 call Screen.clearScreen 0
 pop temp 0
 push constant 256
-pop this 0
-push constant 28
-pop this 1
-push constant 256
-pop this 2
-push constant 78
-pop this 3
-push constant 256
 pop this 4
 push constant 128
 pop this 5
+call Sin.init 0
+pop temp 0
 push pointer 0
 call Clock.deleteClock 1
-pop temp 0
-call Sinus.init 0
 pop temp 0
 push pointer 0
 call Clock.move 1
@@ -36,37 +28,13 @@ call Clock.drawClock 1
 pop temp 0
 push constant 0
 return
-function Clock.drawClock 0
+function Clock.drawLines 0
 push argument 0
 pop pointer 0
 push constant 256
 push constant 128
 push constant 6
 call Screen.drawCircle 3
-pop temp 0
-push constant 156
-push constant 28
-push constant 356
-push constant 28
-call Screen.drawLine 4
-pop temp 0
-push constant 156
-push constant 28
-push constant 156
-push constant 228
-call Screen.drawLine 4
-pop temp 0
-push constant 356
-push constant 228
-push constant 156
-push constant 228
-call Screen.drawLine 4
-pop temp 0
-push constant 356
-push constant 228
-push constant 356
-push constant 28
-call Screen.drawLine 4
 pop temp 0
 push constant 256
 push constant 128
@@ -78,6 +46,35 @@ push constant 256
 push constant 128
 push this 2
 push this 3
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Clock.drawClock 0
+push argument 0
+pop pointer 0
+push constant 156
+push constant 28
+push constant 356
+push constant 28
+call Screen.drawLine 4
+pop temp 0
+push constant 156
+push constant 28
+push constant 156
+push constant 228
+call Screen.drawLine 4
+pop temp 0
+push constant 356
+push constant 228
+push constant 156
+push constant 228
+call Screen.drawLine 4
+pop temp 0
+push constant 356
+push constant 228
+push constant 356
+push constant 28
 call Screen.drawLine 4
 pop temp 0
 push constant 350
@@ -158,46 +155,55 @@ push constant 254
 push constant 223
 call Screen.drawLine 4
 pop temp 0
-push constant 300
+push constant 295
+push constant 59
+push constant 301
 push constant 49
-push constant 306
-push constant 40
 call Screen.drawLine 4
 pop temp 0
 push constant 328
-push constant 85
-push constant 338
-push constant 80
+push constant 88
+push constant 336
+push constant 83
+call Screen.drawLine 4
+pop temp 0
+push constant 217
+push constant 59
+push constant 211
+push constant 49
+call Screen.drawLine 4
+pop temp 0
+push constant 184
+push constant 88
+push constant 176
+push constant 83
+call Screen.drawLine 4
+pop temp 0
+push constant 217
+push constant 197
+push constant 211
+push constant 207
+call Screen.drawLine 4
+pop temp 0
+push constant 184
+push constant 168
+push constant 176
+push constant 173
+call Screen.drawLine 4
+pop temp 0
+push constant 295
+push constant 197
+push constant 301
+push constant 207
+call Screen.drawLine 4
+pop temp 0
+push constant 328
+push constant 168
+push constant 336
+push constant 173
 call Screen.drawLine 4
 pop temp 0
 push constant 0
-return
-function Clock.modulo 1
-push argument 0
-push argument 1
-gt
-not
-push argument 1
-push constant 0
-eq
-or
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push argument 0
-pop local 0
-goto IF_END0
-label IF_FALSE0
-push argument 0
-push argument 1
-push argument 0
-push argument 1
-call Math.divide 2
-call Math.multiply 2
-sub
-pop local 0
-label IF_END0
-push local 0
 return
 function Clock.move 5
 push argument 0
@@ -216,32 +222,34 @@ gt
 not
 if-goto WHILE_END0
 push local 1
-push constant 12
-call Clock.modulo 2
 push constant 5
 call Math.multiply 2
 push local 2
 push constant 12
 call Math.divide 2
 add
-push constant 60
-call Clock.modulo 2
 pop local 3
 push local 2
-push constant 60
-call Clock.modulo 2
 pop local 4
 push constant 6
 push local 4
 call Math.multiply 2
-call Sinus.sin 1
+call Sin.sin 1
+push constant 5
+call Math.multiply 2
+push constant 7
+call Math.divide 2
 push this 4
 add
 pop this 0
 push constant 6
 push local 4
 call Math.multiply 2
-call Sinus.cos 1
+call Sin.cos 1
+push constant 5
+call Math.multiply 2
+push constant 7
+call Math.divide 2
 neg
 push this 5
 add
@@ -249,7 +257,7 @@ pop this 1
 push constant 6
 push local 3
 call Math.multiply 2
-call Sinus.sin 1
+call Sin.sin 1
 push constant 2
 call Math.divide 2
 push this 4
@@ -258,7 +266,7 @@ pop this 2
 push constant 6
 push local 3
 call Math.multiply 2
-call Sinus.cos 1
+call Sin.cos 1
 push constant 2
 call Math.divide 2
 neg
@@ -276,8 +284,6 @@ label IF_TRUE0
 push local 1
 push constant 1
 add
-push constant 12
-call Clock.modulo 2
 pop local 1
 push local 1
 push constant 12
@@ -295,14 +301,32 @@ label IF_FALSE0
 push local 2
 push constant 1
 add
-push constant 60
-call Clock.modulo 2
 pop local 2
 label IF_END0
-push pointer 0
-call Clock.deleteClock 1
+push constant 0
+call Screen.setColor 1
 pop temp 0
-push constant 50
+push constant 256
+push constant 128
+push constant 6
+push constant 0
+call Math.multiply 2
+call Sin.cos 1
+push constant 5
+call Math.multiply 2
+push constant 7
+call Math.divide 2
+call Math.abs 1
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Clock.drawLines 1
+pop temp 0
+push constant 10
 call Sys.wait 1
 pop temp 0
 push local 0
