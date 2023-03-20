@@ -1,0 +1,130 @@
+class Clock 
+{
+    // koordinate (x1,y1) duga kazaljka
+    // (x2,y2) kraća kazaljka
+    field int x1, y1, x2, y2, originx, originy; 
+	constructor Clock new(){
+        do Screen.clearScreen();
+        let x1 = 256;
+        let y1 = 28;
+        let x2 = 256;
+        let y2 = 78;
+        let originx = 256;
+        let originy = 128;
+        do deleteClock();
+        do Sinus.init();
+        do move();
+		return this;
+	}
+  
+    method void deleteClock() {
+        do Screen.clearScreen();
+        do drawClock();
+        return;
+    }
+    method void drawClock(){
+        do Screen.drawCircle(256,128,6);
+        do Screen.drawLine(156,28,356,28);
+        do Screen.drawLine(156,28,156,228);
+        do Screen.drawLine(356,228,156,228);
+        do Screen.drawLine(356,228,356,28);
+        do Screen.drawLine(256,128,x1,y1);
+        do Screen.drawLine(256,128,x2,y2);
+        
+
+        // broj tri
+        do Screen.drawLine(350,118,350,138);
+        do Screen.drawLine(340,118,340,138);
+        do Screen.drawLine(345,118,345,138);
+
+        //broj devet
+        do Screen.drawLine(162,118,162,138);
+        do Screen.drawLine(175,118,167,138);
+        do Screen.drawLine(167,118,175,138);
+
+        //broj dvanaest
+        do Screen.drawLine(259,32,259,52);
+        do Screen.drawLine(264,32,264,52);
+        do Screen.drawLine(254,32,246,52);
+        do Screen.drawLine(246,32,254,52);
+
+        //broj sest
+        do Screen.drawLine(263,203,263,223);
+        do Screen.drawLine(258,203,254,223);
+        do Screen.drawLine(250,203,254,223);
+
+        //jos dodataka
+        do Screen.drawLine(300,49,306,40);
+        do Screen.drawLine(328,85,338,80);
+
+        return;
+    }
+     function int modulo(int num, int x) {
+		var int res;
+		if((~(num > x)) | (x=0)) {
+			let res = num;
+		} else {
+			let res = num - (x * Math.divide(num, x));
+		}
+		return res;
+	}
+    method void move(){
+        var int i, hour, minute,tickH, tickM;
+        let hour = 0;
+        let minute = 0;
+        let i = 0;
+        while ( i > -1){
+
+            let tickH = Clock.modulo(Math.multiply(Clock.modulo(hour,12),5) + Math.divide(minute,12),60);
+            let tickM = Clock.modulo(minute,60);
+
+            let x1 = Sinus.sin(Math.multiply(6, tickM)) + originx;
+            let y1 = -Sinus.cos(Math.multiply(6, tickM)) + originy;
+            let x2 = Math.divide(Sinus.sin(Math.multiply(6, tickH)),2) + originx;
+            let y2 = -Math.divide(Sinus.cos(Math.multiply(6, tickH)),2) + originy; 
+            /*
+            do Output.printInt(hour);
+            do Output.printInt(tickH);
+            do Output.println();
+            do Output.printInt(minute);
+            do Output.printInt(Clock.modulo(minute,60));
+            do Output.println();
+            do Output.printInt(Sinus.sin(Math.multiply(6, tickH)));
+            do Output.println();
+            do Output.printInt(Sinus.cos(Math.multiply(6, tickH)));
+            do Output.println();
+            do Output.printInt(x1);
+            do Output.println();
+            do Output.printInt(y1);
+            do Output.println();
+            do Output.printInt(x2);
+            do Output.println();
+            do Output.printInt(y2);
+            do Output.println();
+            do Output.printString("neww");
+            */
+
+            if (minute + 1 = 60){
+                let hour = Clock.modulo(hour + 1, 12);
+                if (hour = 12){
+                    let hour = 0;
+                }
+                let minute = 0;
+            } else {
+
+                let minute = Clock.modulo(minute + 1, 60);
+            }
+            do deleteClock();
+            do Sys.wait(50);
+
+            let i = i + 1;
+ 
+        }
+        return;
+    }
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+   
+}

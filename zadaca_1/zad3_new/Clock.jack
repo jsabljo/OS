@@ -1,0 +1,65 @@
+class Clock 
+{
+    // koordinate (x1,y1) duga kazaljka
+    // (x2,y2) kraća kazaljka
+    field int x1, y1, x2, y2; 
+	constructor Clock new(){
+        do Screen.clearScreen();
+        let x1 = 256;
+        let y1 = 3;
+        let x2 = 310;
+        let y2 = 128;
+        do deleteClock();
+        do move();
+		return this;
+	}
+    method void deleteClock() {
+        do Screen.clearScreen();
+        do drawClock();
+        return;
+    }
+    method void drawClock(){
+        do Screen.clearScreen();
+        do Screen.drawCircle(256,128,6);
+        do Screen.drawRectangle(254,2,258,30);
+        do Screen.drawRectangle(254,226,258,254);
+        do Screen.drawRectangle(130,126,158,130);
+        do Screen.drawRectangle(354,126,382,130);
+        //do Screen.drawRectangle(256,128,20,2);
+        do Screen.drawLine(256,128,x1,y1);
+        do Screen.drawLine(256,128,x2,y2);
+        
+        //do Screen.drawline(256,128,x2,y2);
+        return;
+    }
+    method void move(){
+        var int i;
+        let i = 0;
+        while ( i < 15){
+            if ( i < 5)
+            {
+                let x1 = x1 + 10;
+                let y1 = y1 + 3;
+            }
+             if ( (i > 4) & (i<10))
+            {
+                let x1 = x1 + 10;
+                let y1 = y1 + 9;
+            }
+             if ( (i > 9) & (i<15))
+            {
+                let x1 = x1 + 3;
+                let y1 = y1 + 10;
+            }
+            let i = i + 1;
+            
+            do drawClock();
+            do Sys.wait(1000);
+        }
+        return;
+    }
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+}

@@ -1,0 +1,25 @@
+class Main{
+	function void main(){
+		var String S,S2,S3;
+		let S = "(1 + 2 + [3)] ";
+		let S2 = "(1 + [x + y])";
+		//let S3 = "(1 + x + y)}}";
+		let S3 = "(1 + x + y)}}";
+		do Output.printString(S);
+		do Output.printString(" - ");
+		do Output.printInt(Brackets.correctBrackets(S));
+		do Output.println();
+		do Output.printString(S2);
+		do Output.printString(" - ");
+		do Output.printInt(Brackets.correctBrackets(S2));
+		do Output.println();
+		do Output.printString(S3);
+		do Output.printString(" - ");
+		do Output.printInt(Brackets.correctBrackets(S3));
+		return;
+	}
+
+
+
+
+  }

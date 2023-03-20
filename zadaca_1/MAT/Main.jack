@@ -1,0 +1,59 @@
+class Main{
+	function void main(){
+		var Mat s,p,k;
+
+		
+		let s = Mat.new(3);
+		let p = Mat.new(3);
+		
+		do s.setElem(0,0,1);
+		do s.setElem(0,1,4);
+		do s.setElem(1,0,0);
+		do s.setElem(1,1,1);
+		do s.setElem(0,2,1);
+		do s.setElem(1,2,1);
+		do s.setElem(2,0,2);
+		do s.setElem(2,1,0);
+		do s.setElem(2,2,0);
+		
+		do p.setElem(0,0,1);
+		do p.setElem(0,1,4);
+		do p.setElem(1,0,1);
+		do p.setElem(1,1,3);
+		do p.setElem(0,2,1);
+		do p.setElem(1,2,4);
+		do p.setElem(2,0,2);
+		do p.setElem(2,1,0);
+		do p.setElem(2,2,0);
+
+		do Output.printString("S: ");
+		do Output.println();
+		do s.print();
+		do Output.printString("P: ");
+		do Output.println();
+		do p.print();
+		/*
+		do Output.println();
+		do Output.printString("trace(S): ");
+		//do Output.printInt(s.trace());
+		*/
+		do Output.println();
+		//let k = s.add(p);
+		//let k = s.multScalar(5);
+		//let k = s.multMat(p);
+		let k = s.norm();
+		//let k = Mat.eye(5);
+		//do k.print();
+		do Output.printInt(k);
+		//let s=s.prodVec(l);
+		//do s.print();
+		do s.dispose();
+		do p.dispose();
+
+		return;
+	}
+
+
+
+
+  }

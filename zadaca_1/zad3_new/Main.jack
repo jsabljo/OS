@@ -1,0 +1,12 @@
+class Main{
+	function void main(){
+		var Clock v;
+		let v = Clock.new();
+		do v.dispose();
+		return;
+	}
+
+
+
+
+  }

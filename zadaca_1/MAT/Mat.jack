@@ -1,0 +1,169 @@
+class Mat{
+	field int size;
+	field Array mat;
+	
+	constructor Mat new(int n){
+		var int i;
+		let i = 0;
+		let size = n;
+		let mat = Array.new(n);
+		while(i < n){
+			let mat[i] = Array.new(n);
+			let i = i + 1;
+		}
+		return this;
+	}
+
+	method void dispose(){
+		do mat.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	method void setElem(int row, int col, int value){
+		var int k;
+		let k = mat[row];
+		let k[col] = value;
+		return ;
+	}
+
+	method int getElem(int row, int col){
+		var int k;
+		let k = mat[row];
+		return k[col];
+	}
+
+	method Array getArray(){
+		return mat;
+	}
+
+	method int getSize(){
+		return size;
+	}
+
+	method Mat add(Mat a){
+		var int i, j;
+		var Array k, s, l, new_a, new_a2;
+		var Mat new_mat;
+		let new_mat = Mat.new(size);
+		let new_a = new_mat.getArray();
+		let i = 0;
+		let j = 0;
+		let s = a.getArray();
+		while(i < size){
+			let j = 0;
+			let new_a2 = new_a[i];
+			while(j < size){
+				let k = mat[i];
+				let l = s[i];
+				let new_a2[j] = l[j] + k[j]; 
+				let j = j + 1;
+			}
+			let i = i + 1;
+		}
+		return new_mat;
+	}
+
+	method Mat multScalar(int a){
+		var int i,k;
+		var Array p,c,mat1;
+		var Mat new_mat;
+		let new_mat = Mat.new(size);
+		let i = 0;
+		let mat1 = new_mat.getArray();
+		while(i < size){
+			let k = 0;
+				while(k < size){
+					let p = mat1[i];
+					let c = mat[i];
+					let p[k] = Math.multiply(a, c[k]); 
+					let k = k + 1;
+				}
+			let i = i + 1;
+		}
+		return new_mat;
+	}
+
+	method Mat multMat(Mat a){
+		var int i,j,k;
+		var Array p,s,l,c,mat1;
+		var Mat new_mat;
+		let new_mat = Mat.new(size);
+		let i = 0;
+		let j = 0;
+		let s =  a.getArray();
+		let mat1 = new_mat.getArray();
+		while(i < size){
+			let j = 0;
+			let mat1[i] = Array.new(size);
+			while(j < size){
+				let k = 0;
+					while(k < size){
+						let p = mat1[i];
+						let l = s[k];
+						let c = mat[i];
+						let p[j] = Math.multiply(l[j],c[k]) + p[j]; 
+						let k = k + 1;
+					}
+				let j = j + 1;
+			}
+			let i = i + 1;
+		}
+		return new_mat;
+	}
+
+	method int norm(){
+		var int i, j, norma;
+		var Array c;
+		let i = 0;
+		let j = 0;
+		let norma = 0;
+		while(i < size){
+			let j = 0;
+			while(j < size){
+				let c = mat[i];
+				let norma = Math.multiply(c[j],c[j]) + norma; 
+				let j = j + 1;
+			}
+			let i = i + 1;
+		}
+		return Math.sqrt(norma);
+	}
+
+	method void print(){
+		var int i,j;
+		var Array k;
+		let i = 0;
+		while(i < size){
+			let j = 0;
+			while(j < size){
+				let k = mat[i];
+				do Output.printInt(k[j]);
+				do Output.printChar(32);
+				let j = j + 1;
+			}
+			do Output.println();
+			let i = i + 1;
+		}
+		return;
+	}
+
+	function Mat eye(int n){
+		var int i,j;
+		var Mat m;
+		let m = Mat.new(n);
+		let i = 0;
+		let j = 0;
+		while(i < n){
+			let j = 0;
+			while(j < n){
+				if (i = j){
+					do m.setElem(i, j, 1);
+				}
+				let j = j + 1;
+			}
+			let i = i + 1;
+		}
+		return m;
+	}
+}
