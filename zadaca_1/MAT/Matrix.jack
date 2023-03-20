@@ -1,8 +1,8 @@
-class Mat{
-	field int size;
+class Matrix{
+	field int size; 
 	field Array mat;
 	
-	constructor Mat new(int n){
+	constructor Matrix new(int n){
 		var int i;
 		let i = 0;
 		let size = n;
@@ -41,12 +41,12 @@ class Mat{
 		return size;
 	}
 
-	method Mat add(Mat a){
+	method Matrix add(Matrix a){
 		var int i, j;
 		var Array k, s, l, new_a, new_a2;
-		var Mat new_mat;
-		let new_mat = Mat.new(size);
-		let new_a = new_mat.getArray();
+		var Matrix new_Matrix;
+		let new_Matrix = Matrix.new(size);
+		let new_a = new_Matrix.getArray();
 		let i = 0;
 		let j = 0;
 		let s = a.getArray();
@@ -61,45 +61,45 @@ class Mat{
 			}
 			let i = i + 1;
 		}
-		return new_mat;
+		return new_Matrix;
 	}
 
-	method Mat multScalar(int a){
+	method Matrix multScalar(int a){
 		var int i,k;
-		var Array p,c,mat1;
-		var Mat new_mat;
-		let new_mat = Mat.new(size);
+		var Array p,c,mat_arr;
+		var Matrix new_Matrix;
+		let new_Matrix = Matrix.new(size);
 		let i = 0;
-		let mat1 = new_mat.getArray();
+		let mat_arr = new_Matrix.getArray();
 		while(i < size){
 			let k = 0;
 				while(k < size){
-					let p = mat1[i];
+					let p = mat_arr[i];
 					let c = mat[i];
 					let p[k] = Math.multiply(a, c[k]); 
 					let k = k + 1;
 				}
 			let i = i + 1;
 		}
-		return new_mat;
+		return new_Matrix;
 	}
 
-	method Mat multMat(Mat a){
+	method Matrix multMat(Matrix a){
 		var int i,j,k;
-		var Array p,s,l,c,mat1;
-		var Mat new_mat;
-		let new_mat = Mat.new(size);
+		var Array p,s,l,c,mat_arr;
+		var Matrix new_Matrix;
+		let new_Matrix = Matrix.new(size);
 		let i = 0;
 		let j = 0;
 		let s =  a.getArray();
-		let mat1 = new_mat.getArray();
+		let mat_arr = new_Matrix.getArray();
 		while(i < size){
 			let j = 0;
-			let mat1[i] = Array.new(size);
+			let mat_arr[i] = Array.new(size);
 			while(j < size){
 				let k = 0;
 					while(k < size){
-						let p = mat1[i];
+						let p = mat_arr[i];
 						let l = s[k];
 						let c = mat[i];
 						let p[j] = Math.multiply(l[j],c[k]) + p[j]; 
@@ -109,7 +109,7 @@ class Mat{
 			}
 			let i = i + 1;
 		}
-		return new_mat;
+		return new_Matrix;
 	}
 
 	method int norm(){
@@ -148,10 +148,10 @@ class Mat{
 		return;
 	}
 
-	function Mat eye(int n){
+	function Matrix eye(int n){
 		var int i,j;
-		var Mat m;
-		let m = Mat.new(n);
+		var Matrix m;
+		let m = Matrix.new(n);
 		let i = 0;
 		let j = 0;
 		while(i < n){

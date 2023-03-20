@@ -3,22 +3,92 @@ class Main{
 		var String S,S2,S3;
 		let S = "(1 + 2 + [3)] ";
 		let S2 = "(1 + [x + y])";
-		//let S3 = "(1 + x + y)}}";
 		let S3 = "(1 + x + y)}}";
 		do Output.printString(S);
 		do Output.printString(" - ");
-		do Output.printInt(Brackets.correctBrackets(S));
+		do Output.printInt(Main.correctBrackets(S));
 		do Output.println();
 		do Output.printString(S2);
 		do Output.printString(" - ");
-		do Output.printInt(Brackets.correctBrackets(S2));
+		do Output.printInt(Main.correctBrackets(S2));
 		do Output.println();
 		do Output.printString(S3);
 		do Output.printString(" - ");
-		do Output.printInt(Brackets.correctBrackets(S3));
+		do Output.printInt(Main.correctBrackets(S3));
 		return;
 	}
+	function boolean correctBrackets(String S)
+    {
+        var int OroundB, OcurlyB, OsquareB, len, i,j;
+        var String openB;
+        let OroundB = 0;
+        let OcurlyB = 0;
+        let OsquareB= 0;
+        let i = 0;
+        let j = 0;
+        let len = S.length();
+        let openB = String.new(len);
+        while (i < len)
+        {
+            if(S.charAt(i) = 40){
+                let OroundB = OroundB + 1;
+                do openB.appendChar(40);
+                let j = j + 1;
+            }
+            if(S.charAt(i) = 41){
+                if (j<1){
+                    return false;
+                }
+                if ( ~(openB.charAt(j - 1) = 40)){
+                    return false;
+                }
+                let OroundB = OroundB - 1;
+                do openB.eraseLastChar();
+                let j = j - 1;
+            }
+            if(S.charAt(i) = 91){
+                let OsquareB = OsquareB + 1;
+                do openB.appendChar(91);
+                let j = j + 1;
+            }
+            if(S.charAt(i) = 93){
+                if (j<1){
+                    return false;
+                }
+                if (~(openB.charAt(j - 1) = 91)){
+                    return false;
+                }
+                let OsquareB = OsquareB - 1;
+                do openB.eraseLastChar();
+                let j = j - 1;
+            }
+            if(S.charAt(i) = 123){
+                let OcurlyB = OcurlyB + 1;
+                do openB.appendChar(123);
+                let j = j + 1;
+            }
+            if(S.charAt(i) = 125){
+                if (j<1){
+                    return false;
+                }
+                if ( ~(openB.charAt(j - 1) = 123)){
+                    return false;
+                }
+                let OcurlyB = OcurlyB - 1;
+                do openB.eraseLastChar();
+                let j = j - 1;
+            }
+            
+            let i = i + 1;
+        }
+        let len = openB.length();
+        if (OroundB = 0 & OcurlyB = 0 & OsquareB = 0 & len = 0){
+            return true;
+        }
+        
+        return false;
 
+    }
 
 
 

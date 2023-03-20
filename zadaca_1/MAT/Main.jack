@@ -1,10 +1,11 @@
 class Main{
 	function void main(){
-		var Mat s,p,k;
+		var Matrix s,p,k;
+		var int l;
 
 		
-		let s = Mat.new(3);
-		let p = Mat.new(3);
+		let s = Matrix.new(3);
+		let p = Matrix.new(3);
 		
 		do s.setElem(0,0,1);
 		do s.setElem(0,1,4);
@@ -32,24 +33,31 @@ class Main{
 		do Output.printString("P: ");
 		do Output.println();
 		do p.print();
-		/*
+
+		do Output.printString("Elem of S at (0,2): ");
+		do Output.printInt(s.getElem(0,2));
 		do Output.println();
-		do Output.printString("trace(S): ");
-		//do Output.printInt(s.trace());
-		*/
+	
+		do Output.printString("Norm of P: ");
+		let l = p.norm();
+		do Output.printInt(l);
 		do Output.println();
-		//let k = s.add(p);
-		//let k = s.multScalar(5);
-		//let k = s.multMat(p);
-		let k = s.norm();
-		//let k = Mat.eye(5);
-		//do k.print();
-		do Output.printInt(k);
-		//let s=s.prodVec(l);
-		//do s.print();
+		do Output.printString("S + P: ");
+		do Output.println();
+		let k = s.add(p);
+		do k.print();
+		do Output.printString("Eye(2): ");
+		do Output.println();
+		let k = Matrix.eye(2);
+		do k.print();
+		let k = s.multScalar(5);
+		do k.print();
+		let k = s.multMat(p);
+		do k.print();
+	
 		do s.dispose();
 		do p.dispose();
-
+		do k.dispose();
 		return;
 	}
 

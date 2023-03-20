@@ -1,4 +1,4 @@
-function Mat.new 1
+function Matrix.new 1
 push constant 2
 call Memory.alloc 1
 pop pointer 0
@@ -32,7 +32,7 @@ goto WHILE_EXP0
 label WHILE_END0
 push pointer 0
 return
-function Mat.dispose 0
+function Matrix.dispose 0
 push argument 0
 pop pointer 0
 push this 1
@@ -43,7 +43,7 @@ call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return
-function Mat.setElem 1
+function Matrix.setElem 1
 push argument 0
 pop pointer 0
 push argument 1
@@ -62,7 +62,7 @@ push temp 0
 pop that 0
 push constant 0
 return
-function Mat.getElem 1
+function Matrix.getElem 1
 push argument 0
 pop pointer 0
 push argument 1
@@ -77,31 +77,31 @@ add
 pop pointer 1
 push that 0
 return
-function Mat.getArray 0
+function Matrix.getArray 0
 push argument 0
 pop pointer 0
 push this 1
 return
-function Mat.getSize 0
+function Matrix.getSize 0
 push argument 0
 pop pointer 0
 push this 0
 return
-function Mat.add 8
+function Matrix.add 8
 push argument 0
 pop pointer 0
 push this 0
-call Mat.new 1
+call Matrix.new 1
 pop local 7
 push local 7
-call Mat.getArray 1
+call Matrix.getArray 1
 pop local 5
 push constant 0
 pop local 0
 push constant 0
 pop local 1
 push argument 1
-call Mat.getArray 1
+call Matrix.getArray 1
 pop local 3
 label WHILE_EXP0
 push local 0
@@ -167,16 +167,16 @@ goto WHILE_EXP0
 label WHILE_END0
 push local 7
 return
-function Mat.multScalar 6
+function Matrix.multScalar 6
 push argument 0
 pop pointer 0
 push this 0
-call Mat.new 1
+call Matrix.new 1
 pop local 5
 push constant 0
 pop local 0
 push local 5
-call Mat.getArray 1
+call Matrix.getArray 1
 pop local 4
 label WHILE_EXP0
 push local 0
@@ -232,21 +232,21 @@ goto WHILE_EXP0
 label WHILE_END0
 push local 5
 return
-function Mat.multMat 9
+function Matrix.multMat 9
 push argument 0
 pop pointer 0
 push this 0
-call Mat.new 1
+call Matrix.new 1
 pop local 8
 push constant 0
 pop local 0
 push constant 0
 pop local 1
 push argument 1
-call Mat.getArray 1
+call Matrix.getArray 1
 pop local 4
 push local 8
-call Mat.getArray 1
+call Matrix.getArray 1
 pop local 7
 label WHILE_EXP0
 push local 0
@@ -341,7 +341,7 @@ goto WHILE_EXP0
 label WHILE_END0
 push local 8
 return
-function Mat.norm 4
+function Matrix.norm 4
 push argument 0
 pop pointer 0
 push constant 0
@@ -399,7 +399,7 @@ label WHILE_END0
 push local 2
 call Math.sqrt 1
 return
-function Mat.print 3
+function Matrix.print 3
 push argument 0
 pop pointer 0
 push constant 0
@@ -450,9 +450,9 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Mat.eye 3
+function Matrix.eye 3
 push argument 0
-call Mat.new 1
+call Matrix.new 1
 pop local 2
 push constant 0
 pop local 0
@@ -482,7 +482,7 @@ push local 2
 push local 0
 push local 1
 push constant 1
-call Mat.setElem 4
+call Matrix.setElem 4
 pop temp 0
 label IF_FALSE0
 push local 1
