@@ -79,16 +79,16 @@ class Sin {
         return;
     }
 
-    function int sin (int A) {
-        return(table[A]);
+    function int sin (int x) {
+        return(table[x]);
     }
     
-    function int cos (int A) {
-        let A = A + 90;   // cos = sin + 90
-        if (A > 359) {    
-            let A = A - 360;
+    function int cos (int x) {
+        let x = x + 90;   // cos = sin + 90
+        if (x > 359) {    
+            let x = x - 360;
         }
-        return(table[A]);
+        return(table[x]);
     }
     
 
