@@ -99,9 +99,9 @@ push argument 0
 push constant 2
 push local 0
 call Math.multiply 2
-sub
 push argument 1
 call Math.multiply 2
+sub
 push argument 1
 lt
 if-goto IF_TRUE1

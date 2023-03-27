@@ -1,11 +1,11 @@
 class Main
 {
     function void main(){
-        do Output.printInt(Math.divide(6,2));
+        do Output.printInt(Math.divide(3589,24));
         do Output.println();
-        do Output.printInt(Math.log(4578));
+        do Output.printInt(Math.log(1024));
         do Output.println();
-        do Output.printInt(Math.pow(3,3));
+        do Output.printInt(Math.pow(9,0));
         return;
     }
 }
