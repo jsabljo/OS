@@ -40,16 +40,22 @@ class Memory
     function int alloc(int size)
     {
         var int curr, next, len, new;
+        var boolean break;
+        let break = true;
         let curr = freeList;
+        do Output.printInt(11111);
+        do Output.println();
         
         // iterate through all blocks
         while (~(curr = 0))
         {
             let next = ram[curr];
             let len = ram[curr + 1];
+
+            do Output.printInt(next);
             
             // check if current block is large enough
-            if (~(len < size + 2)) // len >= size + 2
+            if (~(len < (size + 2))) // len >= size + 2
             {
                 // the block is large enough, use it (first fit) 
                 
@@ -64,10 +70,20 @@ class Memory
             }            
             
             let curr = next;
+            
+            if ((curr = 0) & break){
+                let break = false;
+                do Memory.sort();
+                do Output.printString("sort");
+                let curr = freeList;
+                return 1234;
+            }
+            
         }
         return freeList;
     }
 
+    
     /** De-allocates the given object and frees its space. */
     function void deAlloc(int object)
     {
@@ -79,8 +95,8 @@ class Memory
         {
             let next = ram[curr];
             if (next = 0){
-                let ram[curr] = object - 2;
-                let ram[object - 2] = 0;
+                let ram[curr] = object;
+                let ram[object] = 0;
                 return;
             }
             let curr = next;
@@ -88,6 +104,84 @@ class Memory
         }
         return;
     }
+    function void sort(){
+        var int curr, next, next_prev, prev_curr, pom, i;
+
+        let curr = freeList;
+        let prev_curr = curr;
+        do Output.printInt(12345);
+        do Output.println();
+        while(~(curr = 0)){
+
+            let next = ram[curr];
+            let next_prev = curr;
+            do Output.printString("c");
+            do Output.printInt(curr);
+            
+            while(~(next = 0)){
+                // next = [1,3] , curr[4,7]
+                do Output.printInt(next);
+                do Output.printString("-");
+                if(next + ram[next + 1] + 1 < curr){
+                    do Output.printString("--");
+                    do Output.printInt(next);
+                    if(~(next_prev = curr)){
+                        let ram[next_prev] = curr;
+                    }
+                    if (prev_curr = curr){
+                        let pom = ram[next];
+                        let ram[next] = ram[curr];
+                        let ram[curr] = pom;
+                    }else{
+                        let ram[prev_curr] = next;
+                        let pom = ram[next];
+                        let ram[next] = ram[curr];
+                        let ram[curr] = pom;
+
+                    }
+                }
+                if ( i = 5){
+                    return;
+                }
+                let i = i + 1;
+
+                let next_prev = next;
+                let next = ram[next];            
+            }
+            let prev_curr = curr;
+            let curr = ram[curr];
+        }
+        return ;
+        
+    }
+    
+    function void defrag()
+    {
+        var int curr, next;
+
+        do Memory.sort();
+        let curr = freeList;
+        let next = ram[curr];
+
+        while(~(next = 0))
+        {
+            if(curr + ram[curr + 1] = next)
+            {
+                let ram[curr + 1] = ram[curr + 1] + ram[next + 1];
+                let ram[curr] = ram[next];
+                let ram[next + 1] = null;
+                let ram[next] = null;
+            }
+
+            let curr = next;
+            let next = ram[curr];
+        }
+
+        return;
+    }
+    
+    
+    
 
     function void memcpy(int izvor, int odrediste, int d)
     {
@@ -98,32 +192,21 @@ class Memory
 
             let ram[odrediste + i] = ram[izvor + i];
 
-            let i = i - 1;
-        }
-
-        return ;
-    } 
-
-    function void memcpy2(int izvor, int odrediste, int d)
-    {
-        var int i;
-        // izvor i odrediste su bas pointeri  block
-        
-        while (i < d){
-
-            let ram[odrediste + i + 2] = ram[izvor + i + 2];
-
             let i = i + 1;
         }
 
         return ;
-    }   
+    }  
 
+/*
     function void defrag()
     {
         var int curr, next, prev_curr, prev_next;
+        var boolean break;
+        let break = false;
         let curr = freeList;
         let prev_curr = freeList;
+        do Output.printString("defr");
         
         // iterate through all blocks
         while (~(curr = 0))
@@ -131,7 +214,8 @@ class Memory
             let next = ram[curr];
             let prev_next = curr;
 
-            while (~(next = 0))
+     
+            while ( ~(next = 0))
             {
             
                 //[4,7] i next je [1,3]
@@ -142,6 +226,7 @@ class Memory
                     let ram[next + 1] = ram[next + 1] + 2 + ram[curr + 1];
                     let ram[prev_next] = ram[next];
                     let ram[next] = ram[curr];
+                    let curr = next;
                 }
 
                 if (curr + ram[curr + 1] + 1 + 1 = next){
@@ -151,15 +236,17 @@ class Memory
                 }
 
                 let prev_next = next;
-                let next = ram[next];
-                
+
+                let next = ram[next];    
 
             }
-            let curr = next;
+            let curr = ram[curr];
             let prev_curr = curr;
 
             
         }
         return;
-    }    
+    }  
+    */
+    
 }
