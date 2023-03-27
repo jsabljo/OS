@@ -8,4 +8,6 @@ class Main
         do Output.printInt(Math.pow(9,0));
         return;
     }
+
+    // tuu
 }
