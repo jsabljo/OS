@@ -10,22 +10,9 @@ class Main
    
         let position3 = Memory.alloc(10);
 
-        //do Output.printInt(position2);
-        //do Memory.deAlloc(position3 );
         do Memory.deAlloc(position1 );
         do Memory.deAlloc(position2 );
-     
-        
-        /*
-        let position2 = Memory.alloc(10);
-        do Memory.deAlloc(position2 );
-        */
-
    
-        let position1 = Memory.alloc(17279);
-     
-
-    
         let position1 = Memory.alloc(17279);
 
         return;

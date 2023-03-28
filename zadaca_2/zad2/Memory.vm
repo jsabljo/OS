@@ -45,9 +45,6 @@ not
 pop local 4
 push static 1
 pop local 0
-push local 0
-call Output.printInt 1
-pop temp 0
 label WHILE_EXP0
 push local 0
 push constant 0
@@ -123,8 +120,6 @@ return
 label IF_FALSE0
 push local 1
 pop local 0
-call Output.println 0
-pop temp 0
 push local 0
 push constant 0
 eq
@@ -170,11 +165,15 @@ push local 0
 push static 0
 add
 push argument 0
+push constant 2
+sub
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
 push argument 0
+push constant 2
+sub
 push static 0
 add
 push constant 0
