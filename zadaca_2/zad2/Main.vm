@@ -8,17 +8,12 @@ pop local 1
 push constant 10
 call Memory.alloc 1
 pop local 2
-push local 1
-push constant 2
-sub
-call Memory.deAlloc 1
-pop temp 0
-push local 2
-push constant 2
-sub
-call Memory.deAlloc 1
-pop temp 0
 push local 0
+push constant 2
+sub
+call Memory.deAlloc 1
+pop temp 0
+push local 1
 push constant 2
 sub
 call Memory.deAlloc 1
@@ -26,8 +21,8 @@ pop temp 0
 push constant 17279
 call Memory.alloc 1
 pop local 0
-push local 0
-call Output.printInt 1
-pop temp 0
+push constant 17279
+call Memory.alloc 1
+pop local 0
 push constant 0
 return

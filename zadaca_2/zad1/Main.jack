@@ -2,17 +2,13 @@ class Main
 {
     function void main(){
         
-        do Output.printInt(Math.divide(3589,24));
+        do Output.printInt(Math.divide(123,3));
         do Output.println();
-        do Output.printInt(Math.log(1024));
+        do Output.printInt(Math.log(1));
         do Output.println();
-        do Output.printInt(Math.pow(9,0));
-        
-        
-        
+        do Output.printInt(Math.pow(7,5));
 
         return;
     }
 
-    // tuuuuuuuu
 }

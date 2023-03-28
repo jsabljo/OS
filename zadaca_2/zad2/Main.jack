@@ -1,37 +1,34 @@
 class Main
 {
     function void main(){
-        /*
-        do Output.printInt(Math.divide(3589,24));
-        do Output.println();
-        do Output.printInt(Math.log(1024));
-        do Output.println();
-        do Output.printInt(Math.pow(9,0));
-        
-        */
+    
         
         var int position1, position2, position3;
         let position1 = Memory.alloc(10);
-        //do Output.printInt(position1);
-        //do Output.println();
+ 
         let position2 = Memory.alloc(15);
+   
         let position3 = Memory.alloc(10);
-        //do Output.printInt(position2);
-        do Memory.deAlloc(position2 - 2);
-     
-        do Memory.deAlloc(position3 - 2);
-        do Memory.deAlloc(position1 - 2);
 
+        //do Output.printInt(position2);
+        //do Memory.deAlloc(position3 );
+        do Memory.deAlloc(position1 );
+        do Memory.deAlloc(position2 );
+     
         
-     
-     
+        /*
+        let position2 = Memory.alloc(10);
+        do Memory.deAlloc(position2 );
+        */
+
+   
         let position1 = Memory.alloc(17279);
-        do Output.printInt(position1);
-        
+     
+
     
+        let position1 = Memory.alloc(17279);
 
         return;
     }
 
-    // tuuuuuuuu
 }

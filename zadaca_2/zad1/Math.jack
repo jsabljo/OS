@@ -115,6 +115,10 @@ class Math
     {
         var int i;
         let i = 15;
+
+        if (y < 0){
+            return -1;
+        }
         
         while (i > -1)
         {
@@ -129,16 +133,27 @@ class Math
     }
 
 
+    function int modulo(int num, int x) {
+		var int res;
+		if((~(num > x)) | (x=0)) {
+			let res = num;
+		} else {
+			let res = num - (x * Math.divide(num, x));
+		}
+		return res;
+	}
+
     function int pow(int base, int power)
     {
-        var int res, a;
+        var int res, a,r;
         let res = 1;
         while(power > 0){
             let a = Math.divide(power,2);
-            if (~(power = (a * 2))){
+            let r = Math.modulo(power,2);
+            if (r = 1){
                 let res = res * base;
             }
-            let power = Math.divide(power, 2);
+            let power = a;
             let base = base * base;
         }
         return res;

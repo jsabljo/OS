@@ -43,17 +43,14 @@ class Memory
         var boolean break;
         let break = true;
         let curr = freeList;
-        do Output.printInt(11111);
-        do Output.println();
-        
+
         // iterate through all blocks
+
         while (~(curr = 0))
         {
             let next = ram[curr];
             let len = ram[curr + 1];
 
-            do Output.printInt(next);
-            
             // check if current block is large enough
             if (~(len < (size + 2))) // len >= size + 2
             {
@@ -68,17 +65,15 @@ class Memory
                 // return first element
                 return new + 2;
             }            
-            
+
             let curr = next;
-            
+
             if ((curr = 0) & break){
                 let break = false;
-                do Memory.sort();
-                do Output.printString("sort");
+                do Memory.defrag();
                 let curr = freeList;
-                return 1234;
             }
-            
+
         }
         return freeList;
     }
@@ -95,8 +90,8 @@ class Memory
         {
             let next = ram[curr];
             if (next = 0){
-                let ram[curr] = object;
-                let ram[object] = 0;
+                let ram[curr] = object - 2;
+                let ram[object - 2] = 0;
                 return;
             }
             let curr = next;
@@ -104,27 +99,22 @@ class Memory
         }
         return;
     }
-    function void sort(){
-        var int curr, next, next_prev, prev_curr, pom, i;
+ 
+    
+    function void defrag()
+    {
+        var int curr, next, next_prev, prev_curr, pom, i, pom2;
 
         let curr = freeList;
         let prev_curr = curr;
-        do Output.printInt(12345);
-        do Output.println();
         while(~(curr = 0)){
 
             let next = ram[curr];
             let next_prev = curr;
-            do Output.printString("c");
-            do Output.printInt(curr);
-            
+   
             while(~(next = 0)){
-                // next = [1,3] , curr[4,7]
-                do Output.printInt(next);
-                do Output.printString("-");
-                if(next + ram[next + 1] + 1 < curr){
-                    do Output.printString("--");
-                    do Output.printInt(next);
+     
+                if(next < curr){
                     if(~(next_prev = curr)){
                         let ram[next_prev] = curr;
                     }
@@ -135,46 +125,46 @@ class Memory
                     }else{
                         let ram[prev_curr] = next;
                         let pom = ram[next];
-                        let ram[next] = ram[curr];
+                        if ( ram[curr] = next){
+                            let ram[next] = curr;
+                        } else {
+                            let ram[next] = ram[curr];
+                        }
                         let ram[curr] = pom;
-
+ 
                     }
-                }
-                if ( i = 5){
-                    return;
-                }
-                let i = i + 1;
+                    let pom2 = curr;
+                    let curr = next;
+                    let next_prev = pom2;
+                    let next = ram[pom2];
+    
+                } else {
 
-                let next_prev = next;
-                let next = ram[next];            
+                    let next_prev = next;
+                    let next = ram[next]; 
+                } 
+                     
             }
             let prev_curr = curr;
             let curr = ram[curr];
         }
-        return ;
-        
-    }
-    
-    function void defrag()
-    {
-        var int curr, next;
 
-        do Memory.sort();
+  
         let curr = freeList;
         let next = ram[curr];
 
         while(~(next = 0))
         {
-            if(curr + ram[curr + 1] = next)
+            if((curr + ram[curr + 1] + 2) = next)
             {
-                let ram[curr + 1] = ram[curr + 1] + ram[next + 1];
+                let ram[curr + 1] = ram[curr + 1] + ram[next + 1] + 2;
                 let ram[curr] = ram[next];
-                let ram[next + 1] = null;
-                let ram[next] = null;
+                let next = ram[curr];
+            } else {
+                let curr = next;
+                let next = ram[curr];
             }
-
-            let curr = next;
-            let next = ram[curr];
+     
         }
 
         return;
@@ -186,7 +176,7 @@ class Memory
     function void memcpy(int izvor, int odrediste, int d)
     {
         var int i;
-        // izvor i odrediste su bas pointeri na prvi podatak
+        let i = 0;
 
         while (i < d){
 
@@ -198,55 +188,6 @@ class Memory
         return ;
     }  
 
-/*
-    function void defrag()
-    {
-        var int curr, next, prev_curr, prev_next;
-        var boolean break;
-        let break = false;
-        let curr = freeList;
-        let prev_curr = freeList;
-        do Output.printString("defr");
-        
-        // iterate through all blocks
-        while (~(curr = 0))
-        {
-            let next = ram[curr];
-            let prev_next = curr;
 
-     
-            while ( ~(next = 0))
-            {
-            
-                //[4,7] i next je [1,3]
-                if (next + ram[next + 1] + 1 + 1 = curr){
-                    if (~(prev_curr = 0)){
-                        let ram[prev_curr] = next;
-                    }
-                    let ram[next + 1] = ram[next + 1] + 2 + ram[curr + 1];
-                    let ram[prev_next] = ram[next];
-                    let ram[next] = ram[curr];
-                    let curr = next;
-                }
-
-                if (curr + ram[curr + 1] + 1 + 1 = next){
-                    let ram[curr + 1] = ram[curr + 1] + 2 + ram[next + 1];
-                    let ram[prev_next] = ram[next];
-                    let next = curr;
-                }
-
-                let prev_next = next;
-
-                let next = ram[next];    
-
-            }
-            let curr = ram[curr];
-            let prev_curr = curr;
-
-            
-        }
-        return;
-    }  
-    */
     
 }
