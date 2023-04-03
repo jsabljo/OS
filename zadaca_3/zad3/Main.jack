@@ -1,9 +1,0 @@
-class Main
-{
-    function void main(){
-        var Game g;
-        let g = Game.new(5);
-        do g.dispose();
-        return;
-    }
-}

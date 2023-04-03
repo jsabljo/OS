@@ -170,6 +170,8 @@ class Memory
         return;
     }
     
+    
+    
 
     function void memcpy(int izvor, int odrediste, int d)
     {

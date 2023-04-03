@@ -2,45 +2,19 @@ class Main
 {
     function void main(){
     
-        /*
         
-        var int position1, position2, position32, position3;
+        var int position1, position2, position3;
         let position1 = Memory.alloc(10);
  
         let position2 = Memory.alloc(15);
    
-        let position32 = Memory.alloc(10);
+        let position3 = Memory.alloc(10);
 
         do Memory.deAlloc(position1 );
-        
-
-        let position3 = Memory.alloc(10);
-        do Memory.deAlloc(position32 );
         do Memory.deAlloc(position2 );
    
         let position1 = Memory.alloc(17279);
-        */
-        var Array A, B, C, D, E;
-        let A = Array.new(5);
-        let B = Array.new(5);
-        let A[0] = 1;
-        let A[1] = 2;
-        let A[2] = 3;
-        let A[3] = 4;
-        do Memory.memcpy(A, B, 4);
-        
-        do A.dispose();
-        do B.dispose();
-      
-        let C = Array.new(14318);
-        let D = Array.new(3);
-        let D[0] = 156;
-        do C.dispose();
-        do D.dispose();
-        let E = Array.new(4);
-        //do E.dispose();
-        do Memory.defrag();
-        
+
         return;
     }
 
