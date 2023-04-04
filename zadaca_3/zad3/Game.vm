@@ -452,7 +452,7 @@ pop this 4
 push pointer 0
 call Game.move 1
 pop temp 0
-push constant 150
+push constant 200
 call Sys.wait 1
 pop temp 0
 label IF_FALSE4

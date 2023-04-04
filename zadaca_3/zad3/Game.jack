@@ -101,7 +101,7 @@ class Game {
                 // rotacija
                 let angle = (angle + 1) - (((angle + 1) / 4) * 4);
                 do move();
-                do Sys.wait(150);
+                do Sys.wait(200);
             }
             //prekid igre
             if (Keyboard.keyPressed() = 140) {
