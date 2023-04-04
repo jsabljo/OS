@@ -2,7 +2,7 @@ class Main
 {
     function void main()
     {
-        do Screen.drawCircle(256,220,20);
+        do Screen.drawCircle(128,128,15);
         
         return;
     }

@@ -149,8 +149,7 @@ class Screen
         if((y < 0) | (y > 255)) {
             return;
         }
-        // ako je r prevelik ili negativan
-        if((r < 0) | (r > 181)) {
+        if((r < 0)) {
             return ;
         }
         if (((x + r)>512) | ((y + r)>256) | ((x -r)<0) | ((y - r)<0)){
@@ -159,9 +158,6 @@ class Screen
         let dy = -r;
         let r_squared = r*r;
         while (~(dy > r)){
-            if (y + dy > 255){
-                return;
-            }
             let dy_squared = dy * dy;
             let dx = Math.sqrt(r_squared - dy_squared);
             do Screen.drawLine(x + dx, y + dy, x - dx, y + dy);

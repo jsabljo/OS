@@ -274,10 +274,6 @@ label IF_FALSE1
 push argument 2
 push constant 0
 lt
-push argument 2
-push constant 181
-gt
-or
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
@@ -327,17 +323,6 @@ gt
 not
 not
 if-goto WHILE_END0
-push argument 1
-push local 0
-add
-push constant 255
-gt
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
-push constant 0
-return
-label IF_FALSE4
 push local 0
 push local 0
 call Math.multiply 2
